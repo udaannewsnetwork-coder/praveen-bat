@@ -6,21 +6,21 @@
   <title>Praveen Bat | Fantasy Sports</title>
   <style>
     :root {
-      --bg: #07131d;
-      --bg2: #0d1c2c;
-      --panel: #101f2d;
-      --panel2: #14293d;
-      --card: #172b3d;
+      --bg: #070d16;
+      --bg2: #0d1724;
+      --panel: #111d2d;
+      --panel-2: #16283d;
+      --card: #182b3e;
+      --card-soft: #1d3855;
       --line: rgba(255,255,255,0.08);
-      --text: #edf4ff;
-      --muted: #9fb3ca;
+      --text: #edf5ff;
+      --muted: #9cb1c9;
       --gold: #ffd166;
-      --gold2: #ffb703;
+      --gold-2: #ffbb2d;
       --green: #2dd4bf;
-      --red: #ff5d73;
-      --blue: #48b7ff;
-      --purple: #8b5cf6;
-      --shadow: 0 18px 42px rgba(0,0,0,0.35);
+      --blue: #5dc7ff;
+      --red: #ff5d78;
+      --shadow: 0 24px 48px rgba(0,0,0,0.35);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -28,27 +28,30 @@
     body {
       font-family: "Segoe UI", Arial, sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(255,209,102,0.08), transparent 20%),
-        radial-gradient(circle at bottom right, rgba(72,183,255,0.08), transparent 25%),
-        linear-gradient(180deg, var(--bg) 0%, #0b1624 100%);
+        linear-gradient(180deg, #07131d 0%, #0a1825 100%);
       color: var(--text);
     }
+
     a { text-decoration: none; color: inherit; }
     button { font: inherit; }
 
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
 
     header {
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(8, 19, 29, 0.8);
-      backdrop-filter: blur(14px);
+      background: rgba(9, 18, 28, 0.8);
       border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(14px);
     }
 
     .nav {
-      max-width: 1200px;
+      max-width: 1280px;
       margin: 0 auto;
       padding: 16px 20px;
       display: flex;
@@ -61,7 +64,7 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      font-weight: 800;
+      font-weight: 900;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
@@ -70,17 +73,16 @@
       width: 40px;
       height: 40px;
       border-radius: 14px;
-      background: linear-gradient(135deg, var(--gold), var(--gold2));
-      color: #0c1723;
-      font-size: 1.2rem;
       display: grid;
       place-items: center;
-      box-shadow: 0 10px 25px rgba(255,209,102,0.35);
+      background: linear-gradient(135deg, var(--gold), var(--gold-2));
+      color: #111827;
+      box-shadow: 0 12px 28px rgba(255,191,0,0.35);
     }
 
     .brand-text {
-      color: var(--gold);
       font-size: 1.08rem;
+      color: var(--gold);
     }
 
     .brand-text span { color: var(--text); }
@@ -95,25 +97,25 @@
       background: rgba(255,255,255,0.04);
       border: 1px solid var(--line);
       color: var(--muted);
-      padding: 9px 14px;
       border-radius: 999px;
+      padding: 9px 14px;
       font-size: 0.8rem;
       font-weight: 700;
     }
 
     .wallet-btn {
       border: none;
-      background: linear-gradient(135deg, var(--gold), var(--gold2));
-      color: #111827;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-2));
+      color: #121821;
       font-weight: 800;
       padding: 10px 18px;
-      border-radius: 999px;
-      box-shadow: 0 12px 26px rgba(255,183,3,0.3);
       cursor: pointer;
+      box-shadow: 0 12px 28px rgba(255,191,0,0.25);
     }
 
     .sports-strip {
-      background: rgba(18, 33, 48, 0.95);
+      background: rgba(18, 31, 46, 0.94);
       border-bottom: 1px solid var(--line);
       overflow-x: auto;
       scrollbar-width: none;
@@ -122,7 +124,7 @@
     .sports-strip::-webkit-scrollbar { display: none; }
 
     .sports-inner {
-      max-width: 1200px;
+      max-width: 1280px;
       margin: 0 auto;
       padding: 14px 20px;
       display: flex;
@@ -132,82 +134,84 @@
 
     .sport-tab {
       background: rgba(255,255,255,0.03);
-      border: 1px solid transparent;
       color: var(--muted);
-      font-weight: 700;
+      border: 1px solid transparent;
       padding: 10px 16px;
       border-radius: 12px;
       cursor: pointer;
+      font-weight: 700;
       transition: 0.2s ease;
     }
 
     .sport-tab.active {
-      color: #101827;
-      background: linear-gradient(135deg, var(--gold), #ffcb4c);
-      border-color: rgba(0,0,0,0.1);
+      background: linear-gradient(135deg, var(--gold), #ffcc5c);
+      color: #111827;
+      border-color: rgba(0,0,0,0.08);
     }
 
     .hero {
-      padding: 26px 0 18px;
+      padding: 28px 0 16px;
     }
 
     .hero-box {
       display: grid;
-      grid-template-columns: 1.3fr 0.7fr;
-      gap: 20px;
-      background: linear-gradient(135deg, rgba(18, 40, 60, 0.9), rgba(14, 30, 45, 0.95));
+      grid-template-columns: 1.4fr 0.8fr;
+      gap: 22px;
+      background: linear-gradient(135deg, rgba(19,42,63,0.95), rgba(13,27,40,0.96));
       border: 1px solid var(--line);
-      border-radius: 28px;
-      box-shadow: var(--shadow);
+      border-radius: 30px;
       padding: 28px 22px;
-      overflow: hidden;
+      box-shadow: var(--shadow);
       position: relative;
+      overflow: hidden;
     }
 
     .hero-box::before {
       content: "";
       position: absolute;
-      right: -80px;
-      top: 0;
-      width: 260px;
-      height: 260px;
-      background: radial-gradient(circle, rgba(255,209,102,0.2), transparent 60%);
-      filter: blur(8px);
+      right: -120px;
+      top: -60px;
+      width: 360px;
+      height: 360px;
+      background: radial-gradient(circle, rgba(255,209,102,0.15), transparent 60%);
     }
 
-    .hero-copy { position: relative; z-index: 1; }
+    .hero-copy, .hero-side {
+      position: relative;
+      z-index: 1;
+    }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 7px 12px;
-      border-radius: 999px;
       background: rgba(45,212,191,0.12);
-      border: 1px solid rgba(45,212,191,0.2);
-      color: #9ef7e7;
+      color: #b4f6ea;
+      border: 1px solid rgba(45,212,191,0.22);
+      border-radius: 999px;
+      padding: 7px 12px;
       font-size: 0.72rem;
-      font-weight: 700;
-      text-transform: uppercase;
       letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 700;
       margin-bottom: 18px;
     }
 
     .hero-copy h1 {
-      font-size: clamp(2.1rem, 4vw, 4rem);
-      line-height: 1.04;
+      font-size: clamp(2.2rem, 4vw, 4rem);
+      line-height: 1.06;
       letter-spacing: -0.05em;
       margin-bottom: 14px;
-      max-width: 580px;
+      max-width: 610px;
     }
 
     .hero-copy h1 .gold { color: var(--gold); }
 
     .hero-copy p {
-      max-width: 620px;
+      max-width: 660px;
       color: var(--muted);
       line-height: 1.75;
-      font-size: 1.04rem;
+      font-size: 1.03rem;
     }
 
     .cta-row {
@@ -217,23 +221,22 @@
       margin-top: 22px;
     }
 
-    .primary-btn,
-    .secondary-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 14px 20px;
+    .primary-btn, .secondary-btn {
       border-radius: 14px;
+      padding: 14px 20px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
       font-weight: 800;
-      transition: 0.2s ease;
       cursor: pointer;
+      transition: 0.2s ease;
     }
 
     .primary-btn {
-      background: linear-gradient(135deg, var(--gold), var(--gold2));
-      color: #111827;
-      box-shadow: 0 16px 28px rgba(255,183,3,0.25);
+      background: linear-gradient(135deg, var(--gold), var(--gold-2));
+      color: #101827;
+      box-shadow: 0 18px 32px rgba(255,191,0,0.2);
     }
 
     .secondary-btn {
@@ -245,7 +248,7 @@
     .stats-grid {
       margin-top: 24px;
       display: grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 14px;
     }
 
@@ -260,33 +263,31 @@
     .stat-card strong {
       display: block;
       color: var(--gold);
-      font-size: 1.35rem;
-      margin-bottom: 4px;
+      font-size: 1.4rem;
+      margin-bottom: 5px;
     }
 
     .stat-card span {
-      color: var(--muted);
       font-size: 0.8rem;
+      color: var(--muted);
     }
 
-    .live-panel {
-      background: rgba(14, 25, 37, 0.95);
-      border: 1px solid var(--line);
+    .hero-side {
+      background: rgba(10, 20, 31, 0.9);
       border-radius: 22px;
+      border: 1px solid var(--line);
       padding: 18px 18px 14px;
-      position: relative;
-      z-index: 1;
     }
 
     .panel-head {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 16px;
       color: var(--muted);
-      font-size: 0.8rem;
+      font-size: 0.76rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
+      margin-bottom: 16px;
     }
 
     .live-dot {
@@ -301,9 +302,9 @@
       content: "";
       width: 8px;
       height: 8px;
-      background: var(--red);
       border-radius: 50%;
-      box-shadow: 0 0 14px rgba(255,93,115,0.8);
+      background: var(--red);
+      box-shadow: 0 0 12px rgba(255,93,120,0.8);
     }
 
     .score-stack {
@@ -321,27 +322,24 @@
       border-bottom: 1px solid rgba(255,255,255,0.06);
     }
 
-    .team-meta {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
+    .score-row:last-child { border-bottom: none; }
 
+    .team-meta { display: flex; flex-direction: column; gap: 4px; }
     .team-meta strong { font-size: 1.02rem; }
     .team-meta small { color: var(--muted); }
 
     .score-badge {
-      background: rgba(255,209,102,0.1);
+      background: rgba(255,209,102,0.08);
       border: 1px solid rgba(255,209,102,0.3);
       color: var(--gold);
       border-radius: 10px;
-      font-weight: 800;
       padding: 8px 10px;
+      font-weight: 800;
     }
 
     .odds-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0,1fr));
       gap: 10px;
       margin-top: 18px;
     }
@@ -357,7 +355,7 @@
     .odd-box small {
       display: block;
       color: var(--muted);
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
 
     .odd-box strong {
@@ -365,10 +363,12 @@
       font-size: 1.2rem;
     }
 
-    main { padding-bottom: 32px; }
+    .main-wrap {
+      padding: 18px 0 30px;
+    }
 
-    .section-header {
-      margin: 36px 0 16px;
+    .section-head {
+      margin: 34px 0 18px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -376,12 +376,12 @@
       gap: 12px;
     }
 
-    .section-header h2 {
-      font-size: clamp(1.5rem, 2vw, 2.1rem);
+    .section-head h2 {
+      font-size: clamp(1.5rem, 2vw, 2.2rem);
       letter-spacing: -0.04em;
     }
 
-    .section-header h2 span { color: var(--gold); }
+    .section-head h2 span { color: var(--gold); }
 
     .section-tag {
       background: rgba(255,255,255,0.04);
@@ -400,7 +400,7 @@
     }
 
     .match-card {
-      background: linear-gradient(180deg, rgba(20, 36, 50, 0.96), rgba(12, 22, 31, 0.96));
+      background: linear-gradient(180deg, rgba(22,39,56,0.96), rgba(12,22,31,0.96));
       border: 1px solid var(--line);
       border-radius: 22px;
       padding: 18px;
@@ -412,19 +412,19 @@
       justify-content: space-between;
       align-items: center;
       gap: 10px;
+      margin-bottom: 18px;
       color: var(--muted);
       font-size: 0.74rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      margin-bottom: 18px;
     }
 
     .match-live { color: var(--red); font-weight: 800; }
 
     .match-team-row {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       gap: 10px;
       margin-bottom: 18px;
     }
@@ -445,12 +445,14 @@
       border-radius: 14px;
       display: grid;
       place-items: center;
+      background: linear-gradient(135deg, #b5f7d1, var(--green));
+      color: #0a1721;
       font-weight: 900;
-      color: #111827;
-      background: linear-gradient(135deg, #a7f3d0, var(--green));
     }
 
-    .team-badge.blue { background: linear-gradient(135deg, #bfdbfe, var(--blue)); }
+    .team-badge.blue {
+      background: linear-gradient(135deg, #c7ebff, var(--blue));
+    }
 
     .team-box strong {
       font-size: 1rem;
@@ -458,20 +460,20 @@
     }
 
     .vs-pill {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid var(--line);
       border-radius: 10px;
-      padding: 6px 10px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
       color: var(--muted);
       font-size: 0.72rem;
       font-weight: 800;
+      padding: 6px 10px;
     }
 
     .score-banner {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       margin-bottom: 18px;
       padding: 12px 14px;
       border-radius: 12px;
@@ -491,7 +493,7 @@
 
     .odd-row {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0,1fr));
       gap: 10px;
     }
 
@@ -513,7 +515,7 @@
     .mini-odd small {
       display: block;
       color: var(--muted);
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
 
     .mini-odd strong {
@@ -529,19 +531,19 @@
     }
 
     .promo-card {
-      background: linear-gradient(180deg, rgba(18, 37, 54, 0.95), rgba(11, 20, 31, 0.96));
+      background: linear-gradient(180deg, rgba(18,38,54,0.96), rgba(10,20,31,0.96));
       border: 1px solid var(--line);
       border-radius: 18px;
       padding: 18px 16px;
     }
 
     .promo-card .icon {
-      width: 50px;
-      height: 50px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, rgba(255,209,102,0.15), rgba(72,183,255,0.15));
+      width: 52px;
+      height: 52px;
       display: grid;
       place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(255,209,102,0.18), rgba(93,199,255,0.16));
       font-size: 1.4rem;
       margin-bottom: 12px;
     }
@@ -554,13 +556,13 @@
     .promo-card p {
       color: var(--muted);
       line-height: 1.7;
-      font-size: 0.92rem;
+      font-size: 0.94rem;
     }
 
     .deposit-box {
       margin-top: 32px;
-      background: linear-gradient(135deg, rgba(255,209,102,0.1), rgba(17, 31, 45, 0.96));
-      border: 1px solid rgba(255,209,102,0.35);
+      background: linear-gradient(135deg, rgba(255,209,102,0.08), rgba(15,28,39,0.96));
+      border: 1px solid rgba(255,209,102,0.3);
       border-radius: 26px;
       padding: 24px 20px;
       box-shadow: var(--shadow);
@@ -584,53 +586,53 @@
       line-height: 1.75;
     }
 
+    .note-red {
+      color: #ff9ca8 !important;
+      margin-top: 12px;
+      font-size: 0.82rem;
+    }
+
     .upi-card {
-      background: rgba(7, 19, 29, 0.9);
+      text-align: center;
+      background: rgba(7,19,29,0.9);
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: 18px;
       padding: 20px 18px;
-      text-align: center;
     }
 
     .upi-label {
       display: block;
-      color: var(--muted);
       margin-bottom: 8px;
+      color: var(--muted);
       font-size: 0.76rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
     .upi-code {
-      font-size: clamp(1.4rem, 2vw, 1.8rem);
+      font-size: clamp(1.4rem,2vw,1.8rem);
       font-weight: 800;
       letter-spacing: 0.1em;
       color: var(--blue);
     }
 
-    .note-red {
-      color: #ff9ea9 !important;
-      font-size: 0.82rem;
-      margin-top: 10px;
-    }
-
     footer {
       border-top: 1px solid var(--line);
-      background: rgba(10, 19, 28, 0.9);
-      margin-top: 28px;
+      background: rgba(10,19,28,0.95);
+      margin-top: 30px;
     }
 
     .footer-inner {
-      max-width: 1200px;
+      max-width: 1280px;
       margin: 0 auto;
-      padding: 20px;
+      padding: 22px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 12px;
       color: var(--muted);
-      font-size: 0.86rem;
       flex-wrap: wrap;
+      font-size: 0.86rem;
     }
 
     @media (max-width: 900px) {
@@ -641,8 +643,8 @@
       .nav { flex-wrap: wrap; }
       .nav-actions { width: 100%; justify-content: space-between; }
       .stats-grid { grid-template-columns: 1fr; }
-      .odd-row, .odds-grid { grid-template-columns: 1fr; }
-      .section-header { align-items: flex-start; }
+      .odds-grid, .odd-row { grid-template-columns: 1fr; }
+      .section-head { align-items: flex-start; }
     }
   </style>
 </head>
@@ -678,8 +680,8 @@
         <div class="eyebrow">Play • Predict • Win</div>
         <h1>Fantasy sports with <span class="gold">real excitement</span></h1>
         <p>
-          Join live fantasy contests, choose your winning team, and stay ahead of every match with fast odds,
-          smart predictions, and daily prize opportunities.
+          Join live fantasy contests, build your winning team, and stay in the action with instant odds,
+          smarter picks, and daily reward opportunities across every major sport.
         </p>
 
         <div class="cta-row">
@@ -703,7 +705,7 @@
         </div>
       </div>
 
-      <aside class="live-panel" aria-label="Live match preview">
+      <aside class="hero-side" aria-label="Live match preview">
         <div class="panel-head">
           <span class="live-dot">Live</span>
           <span>18.2 overs</span>
@@ -741,8 +743,8 @@
     </section>
   </div>
 
-  <main class="container">
-    <div class="section-header">
+  <main class="container main-wrap">
+    <div class="section-head">
       <h2><span>🔴</span> Live & Upcoming Matches</h2>
       <div class="section-tag">Updated just now</div>
     </div>
@@ -825,7 +827,7 @@
       </article>
     </section>
 
-    <div class="section-header">
+    <div class="section-head">
       <h2><span>★</span> Why Choose Praveen Bat</h2>
     </div>
 
