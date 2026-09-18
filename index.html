@@ -3,66 +3,65 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Praveen Bat | Live Sports & Fantasy</title>
+    <title>Praveen Bat | Fantasy Sports</title>
     <style>
         :root {
-            --bg: #0b1320;
-            --bg-2: #101a2b;
-            --panel: #121f31;
-            --panel-2: #16273d;
-            --card: #1a2b41;
-            --muted: #9aa9bf;
-            --text: #edf2ff;
-            --yellow: #f8c84b;
-            --yellow-2: #ffda61;
-            --green: #10b981;
-            --red: #ff5d5d;
-            --blue: #4ec3ff;
-            --border: rgba(255,255,255,0.08);
-            --shadow: 0 12px 30px rgba(0,0,0,0.28);
+            --bg: #07131d;
+            --bg-2: #0d1b2a;
+            --panel: #101f2d;
+            --panel-2: #14293d;
+            --card: #172b3d;
+            --card-2: #1d3854;
+            --line: rgba(255,255,255,0.08);
+            --text: #edf4ff;
+            --muted: #9fb3ca;
+            --gold: #ffd166;
+            --gold-2: #ffb703;
+            --green: #2dd4bf;
+            --green-2: #34d399;
+            --red: #ff5d73;
+            --blue: #48b7ff;
+            --purple: #8b5cf6;
+            --shadow: 0 18px 42px rgba(0,0,0,0.35);
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: "Segoe UI", Arial, sans-serif;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
         body {
-            background: linear-gradient(180deg, var(--bg) 0%, #0d1727 100%);
+            font-family: "Segoe UI", Arial, sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(255, 209, 102, 0.08), transparent 20%),
+                radial-gradient(circle at bottom right, rgba(72, 183, 255, 0.08), transparent 25%),
+                linear-gradient(180deg, var(--bg) 0%, #0b1624 100%);
             color: var(--text);
         }
 
-        a {
-            text-decoration: none;
-        }
+        a { text-decoration: none; color: inherit; }
+        button { font: inherit; }
 
-        button {
-            font: inherit;
-        }
-
-        .topbar {
-            background: rgba(18, 31, 49, 0.97);
-            border-bottom: 1px solid var(--border);
-            position: sticky;
-            top: 0;
-            z-index: 20;
-            backdrop-filter: blur(10px);
-        }
-
-        .topbar-inner {
+        .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 14px 20px;
+            padding: 0 20px;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(8, 19, 29, 0.8);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 20px;
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            gap: 20px;
+            align-items: center;
+            gap: 18px;
         }
 
         .brand {
@@ -75,274 +74,339 @@
         }
 
         .brand-mark {
-            width: 38px;
-            height: 38px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, var(--yellow), #ffb703);
+            width: 40px;
+            height: 40px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-2));
+            color: #0c1723;
+            font-size: 1.2rem;
             display: grid;
             place-items: center;
-            color: #17141d;
-            font-weight: 900;
-            box-shadow: var(--shadow);
+            box-shadow: 0 10px 25px rgba(255, 209, 102, 0.35);
         }
 
         .brand-text {
-            font-size: 1.1rem;
-            color: var(--yellow);
+            color: var(--gold);
+            font-size: 1.08rem;
         }
 
         .brand-text span {
             color: var(--text);
         }
 
-        .wallet-pill {
-            background: linear-gradient(135deg, var(--yellow), var(--yellow-2));
-            color: #0f172a;
-            border: none;
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-chip {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid var(--line);
+            color: var(--muted);
+            padding: 9px 14px;
             border-radius: 999px;
-            padding: 10px 18px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .wallet-btn {
+            border: none;
+            background: linear-gradient(135deg, var(--gold), var(--gold-2));
+            color: #111827;
             font-weight: 800;
+            padding: 10px 18px;
+            border-radius: 999px;
+            box-shadow: 0 12px 26px rgba(255, 183, 3, 0.3);
             cursor: pointer;
-            box-shadow: 0 10px 25px rgba(248, 200, 75, 0.35);
         }
 
-        .sports-nav {
-            background: rgba(19, 31, 47, 0.9);
-            border-bottom: 1px solid var(--border);
+        .sports-strip {
+            background: rgba(18, 33, 48, 0.95);
+            border-bottom: 1px solid var(--line);
             overflow-x: auto;
-            white-space: nowrap;
+            scrollbar-width: none;
         }
 
-        .sports-nav-inner {
+        .sports-strip::-webkit-scrollbar { display: none; }
+
+        .sports-inner {
             max-width: 1200px;
             margin: 0 auto;
             padding: 14px 20px;
             display: flex;
             gap: 12px;
-            align-items: center;
+            min-width: max-content;
         }
 
         .sport-tab {
-            background: var(--panel);
-            color: var(--muted);
+            background: rgba(255,255,255,0.03);
             border: 1px solid transparent;
-            padding: 9px 16px;
-            border-radius: 10px;
-            font-size: 0.92rem;
+            color: var(--muted);
             font-weight: 700;
+            padding: 10px 16px;
+            border-radius: 12px;
             cursor: pointer;
             transition: 0.2s ease;
         }
 
         .sport-tab.active {
-            background: linear-gradient(135deg, var(--yellow), #ffc93c);
-            color: #121824;
-            border-color: rgba(0,0,0,0.15);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 24px 20px 40px;
+            color: #101827;
+            background: linear-gradient(135deg, var(--gold), #ffcb4c);
+            border-color: rgba(0,0,0,0.1);
         }
 
         .hero {
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.18), rgba(27, 99, 80, 0.28)),
-                        linear-gradient(135deg, #0f202d, #1a2e3d 45%, #0a1f2c 100%);
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 24px;
-            padding: 28px 20px;
+            padding: 26px 0 18px;
+        }
+
+        .hero-box {
             display: grid;
             grid-template-columns: 1.3fr 0.7fr;
             gap: 20px;
-            align-items: center;
+            background: linear-gradient(135deg, rgba(18, 40, 60, 0.9), rgba(14, 30, 45, 0.95));
+            border: 1px solid var(--line);
+            border-radius: 28px;
             box-shadow: var(--shadow);
+            padding: 28px 22px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-box::before {
+            content: "";
+            position: absolute;
+            right: -80px;
+            top: 0;
+            width: 260px;
+            height: 260px;
+            background: radial-gradient(circle, rgba(255,209,102,0.2), transparent 60%);
+            filter: blur(8px);
+        }
+
+        .hero-copy {
+            position: relative;
+            z-index: 1;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 12px;
+            border-radius: 999px;
+            background: rgba(45,212,191,0.12);
+            border: 1px solid rgba(45,212,191,0.2);
+            color: #9ef7e7;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 18px;
         }
 
         .hero-copy h1 {
-            font-size: clamp(2rem, 4vw, 3.4rem);
-            line-height: 1.1;
-            margin-bottom: 12px;
-            letter-spacing: -0.04em;
+            font-size: clamp(2.1rem, 4vw, 4rem);
+            line-height: 1.04;
+            letter-spacing: -0.05em;
+            margin-bottom: 14px;
+            max-width: 580px;
         }
 
-        .hero-copy .highlight {
-            color: var(--yellow);
+        .hero-copy h1 .gold {
+            color: var(--gold);
         }
 
         .hero-copy p {
-            color: #d4e3fb;
-            font-size: 1rem;
-            max-width: 600px;
-            line-height: 1.7;
+            max-width: 620px;
+            color: var(--muted);
+            line-height: 1.75;
+            font-size: 1.04rem;
         }
 
-        .hero-actions {
-            margin-top: 20px;
+        .cta-row {
             display: flex;
-            gap: 12px;
             flex-wrap: wrap;
-        }
-
-        .primary-btn, .secondary-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            border-radius: 14px;
-            padding: 12px 18px;
-            font-weight: 800;
-            cursor: pointer;
-            transition: 0.2s ease;
-        }
-
-        .primary-btn {
-            background: linear-gradient(135deg, var(--yellow), #ffda61);
-            color: #121824;
-            box-shadow: 0 12px 28px rgba(248, 200, 75, 0.35);
-        }
-
-        .secondary-btn {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.1);
-            color: var(--text);
-        }
-
-        .stats-box {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
             gap: 12px;
             margin-top: 22px;
         }
 
-        .stat {
+        .primary-btn,
+        .secondary-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 20px;
+            border-radius: 14px;
+            font-weight: 800;
+            transition: 0.2s ease;
+            cursor: pointer;
+        }
+
+        .primary-btn {
+            background: linear-gradient(135deg, var(--gold), var(--gold-2));
+            color: #111827;
+            box-shadow: 0 16px 28px rgba(255,183,3,0.25);
+        }
+
+        .secondary-btn {
             background: rgba(255,255,255,0.04);
+            border: 1px solid var(--line);
+            color: var(--text);
+        }
+
+        .stats-grid {
+            margin-top: 24px;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0,1fr));
+            gap: 14px;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.02);
             border: 1px solid rgba(255,255,255,0.06);
             border-radius: 16px;
-            padding: 16px 14px;
+            padding: 15px 12px;
             text-align: center;
         }
 
-        .stat strong {
+        .stat-card strong {
             display: block;
-            font-size: 1.4rem;
+            color: var(--gold);
+            font-size: 1.35rem;
             margin-bottom: 4px;
-            color: var(--yellow);
         }
 
-        .stat span {
+        .stat-card span {
             color: var(--muted);
             font-size: 0.8rem;
         }
 
-        .hero-card {
-            background: rgba(18, 31, 49, 0.8);
-            border: 1px solid rgba(255,255,255,0.08);
+        .live-panel {
+            background: rgba(14, 25, 37, 0.95);
+            border: 1px solid var(--line);
             border-radius: 22px;
-            padding: 18px;
-            box-shadow: var(--shadow);
+            padding: 18px 18px 14px;
+            position: relative;
+            z-index: 1;
         }
 
-        .mini-header {
+        .panel-head {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 16px;
             color: var(--muted);
-            font-size: 0.9rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
         }
 
-        .mini-header .dot {
-            width: 10px;
-            height: 10px;
+        .live-dot {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--red);
+            font-weight: 800;
+        }
+
+        .live-dot::before {
+            content: "";
+            width: 8px;
+            height: 8px;
             background: var(--red);
             border-radius: 50%;
-            display: inline-block;
-            margin-right: 6px;
-            box-shadow: 0 0 10px rgba(255, 93, 93, 0.8);
+            box-shadow: 0 0 14px rgba(255,93,115,0.8);
         }
 
-        .score-line {
+        .score-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .score-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 16px;
+            gap: 10px;
             padding: 12px 0;
             border-bottom: 1px solid rgba(255,255,255,0.06);
         }
 
-        .team {
+        .team-meta {
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 3px;
         }
 
-        .team strong {
-            font-size: 1.08rem;
+        .team-meta strong {
+            font-size: 1.02rem;
         }
 
-        .team small {
+        .team-meta small {
             color: var(--muted);
         }
 
         .score-badge {
-            background: rgba(248, 200, 75, 0.12);
-            color: var(--yellow);
-            border: 1px solid rgba(248, 200, 75, 0.22);
-            padding: 8px 12px;
+            background: rgba(255,209,102,0.1);
+            border: 1px solid rgba(255,209,102,0.3);
+            color: var(--gold);
             border-radius: 10px;
             font-weight: 800;
+            padding: 8px 10px;
         }
 
-        .hero-card .odds {
-            margin-top: 16px;
+        .odds-grid {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 12px;
+            gap: 10px;
+            margin-top: 18px;
         }
 
         .odd-box {
-            background: rgba(255,255,255,0.04);
+            background: rgba(255,255,255,0.03);
             border: 1px solid rgba(255,255,255,0.08);
             border-radius: 12px;
-            padding: 12px 10px;
             text-align: center;
+            padding: 12px 8px;
         }
 
-        .odd-box .label {
-            color: var(--muted);
-            font-size: 0.75rem;
+        .odd-box small {
             display: block;
-            margin-bottom: 5px;
+            color: var(--muted);
+            margin-bottom: 6px;
         }
 
-        .odd-box .rate {
-            color: var(--yellow);
-            font-size: 1.4rem;
-            font-weight: 800;
+        .odd-box strong {
+            color: var(--gold);
+            font-size: 1.2rem;
         }
 
-        .section-top {
-            margin: 36px 0 18px;
+        main {
+            padding-bottom: 32px;
+        }
+
+        .section-header {
+            margin: 36px 0 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 16px;
+            flex-wrap: wrap;
+            gap: 12px;
         }
 
-        .section-title {
-            font-size: clamp(1.3rem, 2vw, 1.8rem);
-            font-weight: 800;
-            letter-spacing: -0.03em;
+        .section-header h2 {
+            font-size: clamp(1.5rem, 2vw, 2.1rem);
+            letter-spacing: -0.04em;
         }
 
-        .section-title .accent {
-            color: var(--yellow);
-        }
+        .section-header h2 span { color: var(--gold); }
 
-        .chip {
+        .section-tag {
             background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.08);
+            border: 1px solid var(--line);
             color: var(--muted);
             padding: 8px 12px;
             border-radius: 999px;
@@ -357,112 +421,108 @@
         }
 
         .match-card {
-            background: linear-gradient(180deg, rgba(26,43,65,0.98), rgba(17,28,40,0.95));
-            border: 1px solid var(--border);
+            background: linear-gradient(180deg, rgba(20, 36, 50, 0.96), rgba(12, 22, 31, 0.96));
+            border: 1px solid var(--line);
             border-radius: 22px;
             padding: 18px;
             box-shadow: var(--shadow);
         }
 
-        .match-header {
+        .match-top {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 8px;
-            margin-bottom: 18px;
+            gap: 10px;
             color: var(--muted);
-            font-size: 0.76rem;
+            font-size: 0.74rem;
             text-transform: uppercase;
             letter-spacing: 0.08em;
+            margin-bottom: 18px;
         }
 
-        .match-status {
+        .match-live {
             color: var(--red);
             font-weight: 800;
         }
 
-        .match-status.live::before {
-            content: "";
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--red);
-            margin-right: 8px;
-            box-shadow: 0 0 10px rgba(255, 93, 93, 0.8);
-        }
-
-        .match-teams {
+        .match-team-row {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 16px;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 18px;
         }
 
-        .team-block {
+        .team-box {
             display: flex;
             align-items: center;
             gap: 10px;
             flex: 1;
+            min-width: 0;
         }
 
-        .team-logo {
-            width: 36px;
-            height: 36px;
-            border-radius: 12px;
+        .team-box.right { justify-content: flex-end; text-align: right; }
+
+        .team-badge {
+            width: 42px;
+            height: 42px;
+            border-radius: 14px;
             display: grid;
             place-items: center;
-            font-weight: 800;
-            color: #101826;
-            background: linear-gradient(135deg, #b2f7cc, var(--green));
+            font-weight: 900;
+            color: #111827;
+            background: linear-gradient(135deg, #a7f3d0, var(--green-2));
         }
 
-        .team-logo.blue {
-            background: linear-gradient(135deg, #bfe8ff, var(--blue));
+        .team-badge.blue {
+            background: linear-gradient(135deg, #bfdbfe, var(--blue));
         }
 
-        .team-block strong {
+        .team-box strong {
             font-size: 1rem;
+            white-space: nowrap;
         }
 
-        .vs-text {
-            font-size: 0.8rem;
-            font-weight: 800;
-            padding: 6px 8px;
-            background: rgba(255,255,255,0.04);
-            border-radius: 8px;
+        .vs-pill {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 6px 10px;
             color: var(--muted);
+            font-size: 0.72rem;
+            font-weight: 800;
         }
 
-        .match-score {
+        .score-banner {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin: 10px 0 18px;
+            gap: 10px;
+            margin-bottom: 18px;
             padding: 12px 14px;
-            background: rgba(255,255,255,0.03);
             border-radius: 12px;
+            background: rgba(255,255,255,0.03);
             border: 1px solid rgba(255,255,255,0.06);
         }
 
-        .match-score strong {
-            color: var(--yellow);
+        .score-banner strong {
+            color: var(--gold);
+            font-size: 1.12rem;
         }
 
-        .match-score span {
+        .score-banner span {
             color: var(--muted);
-            font-size: 0.82rem;
+            font-size: 0.8rem;
         }
 
-        .odds-row {
+        .odd-row {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 10px;
         }
 
-        .odd-pill {
-            background: rgba(255,255,255,0.04);
+        .mini-odd {
+            background: rgba(255,255,255,0.03);
             border: 1px solid rgba(255,255,255,0.08);
             border-radius: 12px;
             padding: 12px 10px;
@@ -471,249 +531,302 @@
             transition: 0.2s ease;
         }
 
-        .odd-pill:hover {
-            border-color: rgba(248, 200, 75, 0.7);
+        .mini-odd:hover {
+            border-color: rgba(255,209,102,0.5);
             transform: translateY(-1px);
         }
 
-        .odd-pill small {
+        .mini-odd small {
             display: block;
             color: var(--muted);
-            margin-bottom: 5px;
+            margin-bottom: 6px;
         }
 
-        .odd-pill strong {
-            color: var(--yellow);
+        .mini-odd strong {
+            color: var(--gold);
+            font-size: 1.08rem;
+        }
+
+        .promo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0,1fr));
+            gap: 14px;
+            margin-top: 14px;
+        }
+
+        .promo-card {
+            background: linear-gradient(180deg, rgba(18, 37, 54, 0.95), rgba(11, 20, 31, 0.96));
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 18px 16px;
+        }
+
+        .promo-card .icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, rgba(255,209,102,0.15), rgba(72,183,255,0.15));
+            display: grid;
+            place-items: center;
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+
+        .promo-card h3 {
             font-size: 1.1rem;
+            margin-bottom: 8px;
         }
 
-        .wallet-box {
-            background: linear-gradient(135deg, rgba(248,200,75,0.12), rgba(17,28,40,0.8));
-            border: 1px solid rgba(248,200,75,0.38);
+        .promo-card p {
+            color: var(--muted);
+            line-height: 1.7;
+            font-size: 0.92rem;
+        }
+
+        .deposit-box {
+            margin-top: 32px;
+            background: linear-gradient(135deg, rgba(255,209,102,0.1), rgba(17, 31, 45, 0.96));
+            border: 1px solid rgba(255,209,102,0.35);
             border-radius: 26px;
-            padding: 26px 22px;
-            margin-top: 28px;
+            padding: 24px 20px;
             box-shadow: var(--shadow);
         }
 
-        .wallet-box-inner {
+        .deposit-inner {
             display: grid;
-            grid-template-columns: 1fr 0.9fr;
-            gap: 16px;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 18px;
             align-items: center;
         }
 
-        .wallet-box h3 {
-            font-size: clamp(1.4rem, 2vw, 1.8rem);
-            margin-bottom: 8px;
-            color: var(--yellow);
+        .deposit-box h3 {
+            color: var(--gold);
+            font-size: clamp(1.5rem, 2vw, 2rem);
+            margin-bottom: 10px;
         }
 
-        .wallet-box p {
+        .deposit-box p {
             color: var(--muted);
-            line-height: 1.7;
+            line-height: 1.75;
         }
 
-        .upi-box {
-            background: rgba(11, 19, 32, 0.9);
+        .upi-card {
+            background: rgba(7, 19, 29, 0.9);
             border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 16px;
-            padding: 18px;
+            border-radius: 18px;
+            padding: 20px 18px;
             text-align: center;
         }
 
-        .upi-box .label {
+        .upi-label {
             display: block;
             color: var(--muted);
             margin-bottom: 8px;
-            font-size: 0.8rem;
-            letter-spacing: 0.06em;
+            font-size: 0.76rem;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
         }
 
         .upi-code {
-            font-size: clamp(1.2rem, 2vw, 1.6rem);
+            font-size: clamp(1.4rem, 2vw, 1.8rem);
             font-weight: 800;
-            letter-spacing: 0.08em;
-            color: #7fd7ff;
+            letter-spacing: 0.1em;
+            color: var(--blue);
         }
 
-        .note {
-            color: #ff8d8d !important;
+        .note-red {
+            color: #ff9ea9 !important;
             font-size: 0.82rem;
-        }
-
-        .bottom-band {
-            background: rgba(255,255,255,0.03);
-            border-top: 1px solid var(--border);
-            margin-top: 32px;
+            margin-top: 10px;
         }
 
         footer {
+            border-top: 1px solid var(--line);
+            background: rgba(10, 19, 28, 0.9);
+            margin-top: 28px;
+        }
+
+        .footer-inner {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 18px 20px 32px;
+            padding: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             gap: 12px;
-            flex-wrap: wrap;
             color: var(--muted);
-            font-size: 0.85rem;
+            font-size: 0.86rem;
+            flex-wrap: wrap;
         }
 
         @media (max-width: 900px) {
-            .hero {
-                grid-template-columns: 1fr;
-            }
-
-            .wallet-box-inner,
-            .match-grid {
+            .hero-box,
+            .deposit-inner,
+            .match-grid,
+            .promo-grid {
                 grid-template-columns: 1fr;
             }
         }
 
-        @media (max-width: 560px) {
-            .topbar-inner,
-            .section-top,
-            footer {
-                flex-direction: column;
+        @media (max-width: 620px) {
+            .nav {
+                flex-wrap: wrap;
+            }
+
+            .nav-actions {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .odd-row,
+            .odds-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header {
                 align-items: flex-start;
-            }
-
-            .stats-box {
-                grid-template-columns: 1fr;
-            }
-
-            .odds-row,
-            .odds {
-                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <header class="topbar">
-        <div class="topbar-inner">
-            <div class="brand" aria-label="Praveen Bat home">
+    <header>
+        <div class="nav">
+            <div class="brand" aria-label="Praveen Bat logo">
                 <div class="brand-mark">P</div>
                 <div class="brand-text">Praveen<span>Bat</span></div>
             </div>
-            <button class="wallet-pill">💰 Wallet: ₹0</button>
+
+            <div class="nav-actions">
+                <div class="nav-chip">Live & Instant</div>
+                <button class="wallet-btn">💰 Wallet: ₹0</button>
+            </div>
         </div>
     </header>
 
-    <nav class="sports-nav" aria-label="Sports categories">
-        <div class="sports-nav-inner">
+    <nav class="sports-strip" aria-label="Sports categories">
+        <div class="sports-inner">
             <button class="sport-tab active">🔥 Live Cricket</button>
             <button class="sport-tab">⚽ Football</button>
             <button class="sport-tab">🎾 Tennis</button>
-            <button class="sport-tab">🎮 Esports</button>
             <button class="sport-tab">🏏 IPL</button>
+            <button class="sport-tab">🎮 Esports</button>
+            <button class="sport-tab">🏆 World Cup</button>
         </div>
     </nav>
 
-    <main class="container">
-        <section class="hero">
+    <div class="container hero">
+        <section class="hero-box">
             <div class="hero-copy">
-                <h1>Win big with <span class="highlight">Praveen Bat</span></h1>
+                <div class="eyebrow">Play • Predict • Win</div>
+                <h1>Fantasy sports with <span class="gold">real excitement</span></h1>
                 <p>
-                    Play fantasy matches, predict winners, and unlock rewards with live sports action.
-                    Build your dream team, track scores, and join the hottest contests every day.
+                    Join live fantasy contests, choose your winning team, and stay ahead of every match with fast odds,
+                    smart predictions, and daily prize opportunities.
                 </p>
-                <div class="hero-actions">
+
+                <div class="cta-row">
                     <a href="#deposit" class="primary-btn">⚡ Join Contest</a>
-                    <a href="#matches" class="secondary-btn">📊 View Matches</a>
+                    <a href="#matches" class="secondary-btn">📊 Explore Matches</a>
                 </div>
-                <div class="stats-box">
-                    <div class="stat">
+
+                <div class="stats-grid">
+                    <div class="stat-card">
                         <strong>12k+</strong>
-                        <span>Players</span>
+                        <span>Players online</span>
                     </div>
-                    <div class="stat">
+                    <div class="stat-card">
                         <strong>₹3.2L</strong>
-                        <span>Prize Pool</span>
+                        <span>Prize pool</span>
                     </div>
-                    <div class="stat">
+                    <div class="stat-card">
                         <strong>4.8/5</strong>
-                        <span>User Rating</span>
+                        <span>User rating</span>
                     </div>
                 </div>
             </div>
 
-            <div class="hero-card">
-                <div class="mini-header">
-                    <span><span class="dot"></span> Live Match</span>
-                    <span>18.2 Overs</span>
+            <aside class="live-panel" aria-label="Live match preview">
+                <div class="panel-head">
+                    <span class="live-dot">Live</span>
+                    <span>18.2 overs</span>
                 </div>
 
-                <div class="score-line">
-                    <div class="team">
-                        <strong>India</strong>
-                        <small>1st innings</small>
+                <div class="score-stack">
+                    <div class="score-row">
+                        <div class="team-meta">
+                            <strong>India</strong>
+                            <small>1st innings</small>
+                        </div>
+                        <div class="score-badge">174/4</div>
                     </div>
-                    <div class="score-badge">174/4</div>
-                </div>
 
-                <div class="score-line">
-                    <div class="team">
-                        <strong>Australia</strong>
-                        <small>Need 29 off 12</small>
+                    <div class="score-row">
+                        <div class="team-meta">
+                            <strong>Australia</strong>
+                            <small>Need 29 off 12</small>
+                        </div>
+                        <div class="score-badge">155/7</div>
                     </div>
-                    <div class="score-badge">155/7</div>
                 </div>
 
-                <div class="odds">
+                <div class="odds-grid">
                     <div class="odd-box">
-                        <span class="label">India Win</span>
-                        <span class="rate">1.85</span>
+                        <small>India Win</small>
+                        <strong>1.85</strong>
                     </div>
                     <div class="odd-box">
-                        <span class="label">Australia Win</span>
-                        <span class="rate">2.10</span>
+                        <small>Australia Win</small>
+                        <strong>2.10</strong>
                     </div>
                 </div>
-            </div>
+            </aside>
         </section>
+    </div>
 
-        <div class="section-top" id="matches">
-            <div class="section-title"><span class="accent">🔴</span> Live & Upcoming Matches</div>
-            <div class="chip">Updated just now</div>
+    <main class="container">
+        <div class="section-header">
+            <h2><span>🔴</span> Live & Upcoming Matches</h2>
+            <div class="section-tag">Updated just now</div>
         </div>
 
-        <section class="match-grid">
+        <section class="match-grid" id="matches">
             <article class="match-card">
-                <div class="match-header">
-                    <span class="match-status live">Live</span>
+                <div class="match-top">
+                    <span class="match-live">Live</span>
                     <span>T20 Series</span>
                 </div>
 
-                <div class="match-teams">
-                    <div class="team-block">
-                        <div class="team-logo">I</div>
+                <div class="match-team-row">
+                    <div class="team-box">
+                        <div class="team-badge">I</div>
                         <strong>India</strong>
                     </div>
-                    <div class="vs-text">VS</div>
-                    <div class="team-block" style="justify-content: flex-end; text-align: right;">
+                    <div class="vs-pill">VS</div>
+                    <div class="team-box right">
                         <strong>Australia</strong>
-                        <div class="team-logo blue">A</div>
+                        <div class="team-badge blue">A</div>
                     </div>
                 </div>
 
-                <div class="match-score">
+                <div class="score-banner">
                     <div>
                         <strong>IND 174/4</strong>
                         <span>(18.2 ov)</span>
                     </div>
-                    <span>Target: 188</span>
+                    <span>Target 188</span>
                 </div>
 
-                <div class="odds-row">
-                    <div class="odd-pill">
+                <div class="odd-row">
+                    <div class="mini-odd">
                         <small>India Win</small>
                         <strong>1.85</strong>
                     </div>
-                    <div class="odd-pill">
+                    <div class="mini-odd">
                         <small>Australia Win</small>
                         <strong>2.10</strong>
                     </div>
@@ -721,37 +834,37 @@
             </article>
 
             <article class="match-card">
-                <div class="match-header">
-                    <span class="match-status live">Live</span>
+                <div class="match-top">
+                    <span class="match-live">Live</span>
                     <span>Premier League</span>
                 </div>
 
-                <div class="match-teams">
-                    <div class="team-block">
-                        <div class="team-logo">A</div>
+                <div class="match-team-row">
+                    <div class="team-box">
+                        <div class="team-badge">A</div>
                         <strong>Arsenal</strong>
                     </div>
-                    <div class="vs-text">VS</div>
-                    <div class="team-block" style="justify-content: flex-end; text-align: right;">
+                    <div class="vs-pill">VS</div>
+                    <div class="team-box right">
                         <strong>Chelsea</strong>
-                        <div class="team-logo blue">C</div>
+                        <div class="team-badge blue">C</div>
                     </div>
                 </div>
 
-                <div class="match-score">
+                <div class="score-banner">
                     <div>
                         <strong>2 - 1</strong>
                         <span>2nd Half</span>
                     </div>
-                    <span>FT in 23 min</span>
+                    <span>In 23 min</span>
                 </div>
 
-                <div class="odds-row">
-                    <div class="odd-pill">
+                <div class="odd-row">
+                    <div class="mini-odd">
                         <small>Arsenal</small>
                         <strong>1.40</strong>
                     </div>
-                    <div class="odd-pill">
+                    <div class="mini-odd">
                         <small>Chelsea</small>
                         <strong>3.50</strong>
                     </div>
@@ -759,32 +872,54 @@
             </article>
         </section>
 
-        <section class="wallet-box" id="deposit">
-            <div class="wallet-box-inner">
+        <div class="section-header">
+            <h2><span>★</span> Why Choose Praveen Bat</h2>
+        </div>
+
+        <section class="promo-grid">
+            <article class="promo-card">
+                <div class="icon">⚡</div>
+                <h3>Instant Play</h3>
+                <p>Quick fantasy contests with instant match selection and seamless action for all major sports.</p>
+            </article>
+
+            <article class="promo-card">
+                <div class="icon">💸</div>
+                <h3>Daily Rewards</h3>
+                <p>Compete in micro and mega contests with exciting prize pools and wallet-friendly entry fees.</p>
+            </article>
+
+            <article class="promo-card">
+                <div class="icon">📈</div>
+                <h3>Smart Insights</h3>
+                <p>Watch trends, compare odds, and track live updates to stay ahead of every match day.</p>
+            </article>
+        </section>
+
+        <section class="deposit-box" id="deposit">
+            <div class="deposit-inner">
                 <div>
-                    <h3>Add Funds / Deposit</h3>
+                    <h3>Add Funds</h3>
                     <p>
-                        Transfer your contest entry amount securely using the official UPI ID below.
-                        Your wallet will be updated after payment confirmation from our team.
+                        Transfer your amount directly using the official UPI ID below. Once the payment is confirmed,
+                        your wallet will be updated instantly and you can join the contest of your choice.
                     </p>
-                    <p class="note" style="margin-top: 12px;">
-                        Note: Send payment screenshot on WhatsApp to activate your wallet instantly.
-                    </p>
+                    <p class="note-red">Note: Send payment screenshot on WhatsApp for wallet verification.</p>
                 </div>
 
-                <div class="upi-box">
-                    <span class="label">UPI ID</span>
+                <div class="upi-card">
+                    <span class="upi-label">UPI ID</span>
                     <div class="upi-code">8929469325@fam</div>
                 </div>
             </div>
         </section>
     </main>
 
-    <div class="bottom-band">
-        <footer>
+    <footer>
+        <div class="footer-inner">
             <span>© 2026 Praveen Bat. All Rights Reserved.</span>
             <span>Play responsibly • 18+ Only</span>
-        </footer>
-    </div>
+        </div>
+    </footer>
 </body>
 </html>
