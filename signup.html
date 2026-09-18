@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Sign up | Praveen Bat</title>
+  <link rel="stylesheet" href="app.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="app.js"></script>
+</head>
+<body>
+  <main class="auth-shell">
+    <section class="auth-card">
+      <a class="brand" href="index.html"><b>P</b> PRAVEEN<span>BAT</span></a>
+      <h1>Create account</h1>
+      <p class="muted">Start with a demo Praveen Bat account.</p>
+
+      <form id="signupForm">
+        <label>Email<input id="signupEmail" type="email" placeholder="you@example.com" required></label>
+        <label>Password<input id="signupPassword" type="password" minlength="6" placeholder="At least 6 characters" required></label>
+        <button class="btn primary" type="submit">Create account</button>
+      </form>
+
+      <p class="muted center">Already registered? <a href="login.html">Login</a></p>
+      <small class="notice">Demo interface only. No real-money wagering or payments are processed.</small>
+    </section>
+  </main>
+
+  <script>
+    document.getElementById("signupForm").addEventListener("submit", async (event) => {
+      event.preventDefault();
+      await signUpUser(
+        document.getElementById("signupEmail").value,
+        document.getElementById("signupPassword").value
+      );
+    });
+  </script>
+</body>
+</html>
