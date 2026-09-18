@@ -1,243 +1,790 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Praveen Bat - Live Sports & Gaming</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Praveen Bat | Live Sports & Fantasy</title>
     <style>
+        :root {
+            --bg: #0b1320;
+            --bg-2: #101a2b;
+            --panel: #121f31;
+            --panel-2: #16273d;
+            --card: #1a2b41;
+            --muted: #9aa9bf;
+            --text: #edf2ff;
+            --yellow: #f8c84b;
+            --yellow-2: #ffda61;
+            --green: #10b981;
+            --red: #ff5d5d;
+            --blue: #4ec3ff;
+            --border: rgba(255,255,255,0.08);
+            --shadow: 0 12px 30px rgba(0,0,0,0.28);
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Arial, sans-serif;
+            font-family: "Segoe UI", Arial, sans-serif;
         }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            background-color: #121824;
-            color: #ffffff;
+            background: linear-gradient(180deg, var(--bg) 0%, #0d1727 100%);
+            color: var(--text);
         }
-        /* Top Header */
-        header {
-            background: #1b2230;
-            padding: 15px 20px;
+
+        a {
+            text-decoration: none;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        .topbar {
+            background: rgba(18, 31, 49, 0.97);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            backdrop-filter: blur(10px);
+        }
+
+        .topbar-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 14px 20px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid #ffcc00;
-        }
-        .logo {
-            font-size: 22px;
-            font-weight: bold;
-            color: #ffcc00;
-            letter-spacing: 1px;
-        }
-        .logo span {
-            color: #ffffff;
-        }
-        .wallet-btn {
-            background: #ffcc00;
-            color: #121824;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-weight: bold;
-            border: none;
-            cursor: pointer;
-        }
-        /* Sports Categories Bar */
-        .sports-nav {
-            background: #18202d;
-            padding: 10px 20px;
-            display: flex;
-            gap: 15px;
-            overflow-x: auto;
-            border-bottom: 1px solid #2a3447;
-        }
-        .sport-tab {
-            background: #222d3f;
-            color: #adb5bd;
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-size: 14px;
-            white-space: nowrap;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        .sport-tab.active {
-            background: #ffcc00;
-            color: #121824;
-        }
-        /* Main Container */
-        .container {
-            max-width: 900px;
-            margin: 20px auto;
-            padding: 10px;
-        }
-        .section-title {
-            font-size: 18px;
-            margin-bottom: 15px;
-            color: #ffcc00;
-            font-weight: bold;
-        }
-        /* Live Match Card */
-        .match-card {
-            background: #1b2230;
-            border: 1px solid #2a3447;
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 15px;
-        }
-        .match-status {
-            display: flex;
             justify-content: space-between;
-            font-size: 12px;
-            color: #ff4d4d;
-            font-weight: bold;
-            margin-bottom: 10px;
+            gap: 20px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
         }
-        .teams-score {
+
+        .brand-mark {
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--yellow), #ffb703);
+            display: grid;
+            place-items: center;
+            color: #17141d;
+            font-weight: 900;
+            box-shadow: var(--shadow);
+        }
+
+        .brand-text {
+            font-size: 1.1rem;
+            color: var(--yellow);
+        }
+
+        .brand-text span {
+            color: var(--text);
+        }
+
+        .wallet-pill {
+            background: linear-gradient(135deg, var(--yellow), var(--yellow-2));
+            color: #0f172a;
+            border: none;
+            border-radius: 999px;
+            padding: 10px 18px;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(248, 200, 75, 0.35);
+        }
+
+        .sports-nav {
+            background: rgba(19, 31, 47, 0.9);
+            border-bottom: 1px solid var(--border);
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .sports-nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 14px 20px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .sport-tab {
+            background: var(--panel);
+            color: var(--muted);
+            border: 1px solid transparent;
+            padding: 9px 16px;
+            border-radius: 10px;
+            font-size: 0.92rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .sport-tab.active {
+            background: linear-gradient(135deg, var(--yellow), #ffc93c);
+            color: #121824;
+            border-color: rgba(0,0,0,0.15);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px 20px 40px;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.18), rgba(27, 99, 80, 0.28)),
+                        linear-gradient(135deg, #0f202d, #1a2e3d 45%, #0a1f2c 100%);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 24px;
+            padding: 28px 20px;
+            display: grid;
+            grid-template-columns: 1.3fr 0.7fr;
+            gap: 20px;
+            align-items: center;
+            box-shadow: var(--shadow);
+        }
+
+        .hero-copy h1 {
+            font-size: clamp(2rem, 4vw, 3.4rem);
+            line-height: 1.1;
+            margin-bottom: 12px;
+            letter-spacing: -0.04em;
+        }
+
+        .hero-copy .highlight {
+            color: var(--yellow);
+        }
+
+        .hero-copy p {
+            color: #d4e3fb;
+            font-size: 1rem;
+            max-width: 600px;
+            line-height: 1.7;
+        }
+
+        .hero-actions {
+            margin-top: 20px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .primary-btn, .secondary-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            border-radius: 14px;
+            padding: 12px 18px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .primary-btn {
+            background: linear-gradient(135deg, var(--yellow), #ffda61);
+            color: #121824;
+            box-shadow: 0 12px 28px rgba(248, 200, 75, 0.35);
+        }
+
+        .secondary-btn {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--text);
+        }
+
+        .stats-box {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 22px;
+        }
+
+        .stat {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 16px 14px;
+            text-align: center;
+        }
+
+        .stat strong {
+            display: block;
+            font-size: 1.4rem;
+            margin-bottom: 4px;
+            color: var(--yellow);
+        }
+
+        .stat span {
+            color: var(--muted);
+            font-size: 0.8rem;
+        }
+
+        .hero-card {
+            background: rgba(18, 31, 49, 0.8);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 22px;
+            padding: 18px;
+            box-shadow: var(--shadow);
+        }
+
+        .mini-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 16px;
-            font-weight: bold;
-            margin-bottom: 15px;
+            margin-bottom: 16px;
+            color: var(--muted);
+            font-size: 0.9rem;
         }
-        .odds-container {
+
+        .mini-header .dot {
+            width: 10px;
+            height: 10px;
+            background: var(--red);
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 6px;
+            box-shadow: 0 0 10px rgba(255, 93, 93, 0.8);
+        }
+
+        .score-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .team {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .team strong {
+            font-size: 1.08rem;
+        }
+
+        .team small {
+            color: var(--muted);
+        }
+
+        .score-badge {
+            background: rgba(248, 200, 75, 0.12);
+            color: var(--yellow);
+            border: 1px solid rgba(248, 200, 75, 0.22);
+            padding: 8px 12px;
+            border-radius: 10px;
+            font-weight: 800;
+        }
+
+        .hero-card .odds {
+            margin-top: 16px;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .odd-box {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 12px 10px;
+            text-align: center;
+        }
+
+        .odd-box .label {
+            color: var(--muted);
+            font-size: 0.75rem;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .odd-box .rate {
+            color: var(--yellow);
+            font-size: 1.4rem;
+            font-weight: 800;
+        }
+
+        .section-top {
+            margin: 36px 0 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .section-title {
+            font-size: clamp(1.3rem, 2vw, 1.8rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+        }
+
+        .section-title .accent {
+            color: var(--yellow);
+        }
+
+        .chip {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            color: var(--muted);
+            padding: 8px 12px;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .match-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .match-card {
+            background: linear-gradient(180deg, rgba(26,43,65,0.98), rgba(17,28,40,0.95));
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            padding: 18px;
+            box-shadow: var(--shadow);
+        }
+
+        .match-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 18px;
+            color: var(--muted);
+            font-size: 0.76rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .match-status {
+            color: var(--red);
+            font-weight: 800;
+        }
+
+        .match-status.live::before {
+            content: "";
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--red);
+            margin-right: 8px;
+            box-shadow: 0 0 10px rgba(255, 93, 93, 0.8);
+        }
+
+        .match-teams {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .team-block {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex: 1;
+        }
+
+        .team-logo {
+            width: 36px;
+            height: 36px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            font-weight: 800;
+            color: #101826;
+            background: linear-gradient(135deg, #b2f7cc, var(--green));
+        }
+
+        .team-logo.blue {
+            background: linear-gradient(135deg, #bfe8ff, var(--blue));
+        }
+
+        .team-block strong {
+            font-size: 1rem;
+        }
+
+        .vs-text {
+            font-size: 0.8rem;
+            font-weight: 800;
+            padding: 6px 8px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 8px;
+            color: var(--muted);
+        }
+
+        .match-score {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0 18px;
+            padding: 12px 14px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .match-score strong {
+            color: var(--yellow);
+        }
+
+        .match-score span {
+            color: var(--muted);
+            font-size: 0.82rem;
+        }
+
+        .odds-row {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 10px;
         }
-        .odd-box {
-            background: #222d3f;
-            border: 1px solid #334155;
-            padding: 10px;
+
+        .odd-pill {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 12px 10px;
             text-align: center;
-            border-radius: 6px;
             cursor: pointer;
-            transition: 0.2s;
+            transition: 0.2s ease;
         }
-        .odd-box:hover {
-            border-color: #ffcc00;
+
+        .odd-pill:hover {
+            border-color: rgba(248, 200, 75, 0.7);
+            transform: translateY(-1px);
         }
-        .odd-box .team-name {
-            font-size: 12px;
-            color: #94a3b8;
+
+        .odd-pill small {
+            display: block;
+            color: var(--muted);
+            margin-bottom: 5px;
         }
-        .odd-box .rate {
-            font-size: 16px;
-            color: #ffcc00;
-            font-weight: bold;
+
+        .odd-pill strong {
+            color: var(--yellow);
+            font-size: 1.1rem;
         }
-        /* Wallet / Deposit Box */
+
         .wallet-box {
-            background: #1b2230;
-            border: 2px dashed #ffcc00;
-            border-radius: 10px;
-            padding: 20px;
+            background: linear-gradient(135deg, rgba(248,200,75,0.12), rgba(17,28,40,0.8));
+            border: 1px solid rgba(248,200,75,0.38);
+            border-radius: 26px;
+            padding: 26px 22px;
+            margin-top: 28px;
+            box-shadow: var(--shadow);
+        }
+
+        .wallet-box-inner {
+            display: grid;
+            grid-template-columns: 1fr 0.9fr;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .wallet-box h3 {
+            font-size: clamp(1.4rem, 2vw, 1.8rem);
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+
+        .wallet-box p {
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .upi-box {
+            background: rgba(11, 19, 32, 0.9);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 18px;
             text-align: center;
-            margin-top: 30px;
         }
-        .upi-display {
-            background: #121824;
-            border: 1px solid #2a3447;
-            padding: 12px;
-            border-radius: 6px;
-            margin: 15px 0;
-            font-size: 18px;
-            color: #ffcc00;
-            font-weight: bold;
+
+        .upi-box .label {
+            display: block;
+            color: var(--muted);
+            margin-bottom: 8px;
+            font-size: 0.8rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
         }
+
+        .upi-code {
+            font-size: clamp(1.2rem, 2vw, 1.6rem);
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            color: #7fd7ff;
+        }
+
+        .note {
+            color: #ff8d8d !important;
+            font-size: 0.82rem;
+        }
+
+        .bottom-band {
+            background: rgba(255,255,255,0.03);
+            border-top: 1px solid var(--border);
+            margin-top: 32px;
+        }
+
         footer {
-            text-align: center;
-            padding: 20px;
-            background: #1b2230;
-            color: #64748b;
-            margin-top: 30px;
-            font-size: 12px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 18px 20px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .wallet-box-inner,
+            .match-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .topbar-inner,
+            .section-top,
+            footer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .stats-box {
+                grid-template-columns: 1fr;
+            }
+
+            .odds-row,
+            .odds {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-
-    <!-- Header -->
-    <header>
-        <div class="logo">PRAVEEN<span>BAT</span></div>
-        <button class="wallet-btn">💰 Wallet: ₹0</button>
+    <header class="topbar">
+        <div class="topbar-inner">
+            <div class="brand" aria-label="Praveen Bat home">
+                <div class="brand-mark">P</div>
+                <div class="brand-text">Praveen<span>Bat</span></div>
+            </div>
+            <button class="wallet-pill">💰 Wallet: ₹0</button>
+        </div>
     </header>
 
-    <!-- Sports Navigation -->
-    <div class="sports-nav">
-        <div class="sport-tab active">🔥 Live Cricket</div>
-        <div class="sport-tab">⚽ Football</div>
-        <div class="sport-tab">🎾 Tennis</div>
-        <div class="sport-tab">🎮 Esports</div>
+    <nav class="sports-nav" aria-label="Sports categories">
+        <div class="sports-nav-inner">
+            <button class="sport-tab active">🔥 Live Cricket</button>
+            <button class="sport-tab">⚽ Football</button>
+            <button class="sport-tab">🎾 Tennis</button>
+            <button class="sport-tab">🎮 Esports</button>
+            <button class="sport-tab">🏏 IPL</button>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="hero">
+            <div class="hero-copy">
+                <h1>Win big with <span class="highlight">Praveen Bat</span></h1>
+                <p>
+                    Play fantasy matches, predict winners, and unlock rewards with live sports action.
+                    Build your dream team, track scores, and join the hottest contests every day.
+                </p>
+                <div class="hero-actions">
+                    <a href="#deposit" class="primary-btn">⚡ Join Contest</a>
+                    <a href="#matches" class="secondary-btn">📊 View Matches</a>
+                </div>
+                <div class="stats-box">
+                    <div class="stat">
+                        <strong>12k+</strong>
+                        <span>Players</span>
+                    </div>
+                    <div class="stat">
+                        <strong>₹3.2L</strong>
+                        <span>Prize Pool</span>
+                    </div>
+                    <div class="stat">
+                        <strong>4.8/5</strong>
+                        <span>User Rating</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-card">
+                <div class="mini-header">
+                    <span><span class="dot"></span> Live Match</span>
+                    <span>18.2 Overs</span>
+                </div>
+
+                <div class="score-line">
+                    <div class="team">
+                        <strong>India</strong>
+                        <small>1st innings</small>
+                    </div>
+                    <div class="score-badge">174/4</div>
+                </div>
+
+                <div class="score-line">
+                    <div class="team">
+                        <strong>Australia</strong>
+                        <small>Need 29 off 12</small>
+                    </div>
+                    <div class="score-badge">155/7</div>
+                </div>
+
+                <div class="odds">
+                    <div class="odd-box">
+                        <span class="label">India Win</span>
+                        <span class="rate">1.85</span>
+                    </div>
+                    <div class="odd-box">
+                        <span class="label">Australia Win</span>
+                        <span class="rate">2.10</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-top" id="matches">
+            <div class="section-title"><span class="accent">🔴</span> Live & Upcoming Matches</div>
+            <div class="chip">Updated just now</div>
+        </div>
+
+        <section class="match-grid">
+            <article class="match-card">
+                <div class="match-header">
+                    <span class="match-status live">Live</span>
+                    <span>T20 Series</span>
+                </div>
+
+                <div class="match-teams">
+                    <div class="team-block">
+                        <div class="team-logo">I</div>
+                        <strong>India</strong>
+                    </div>
+                    <div class="vs-text">VS</div>
+                    <div class="team-block" style="justify-content: flex-end; text-align: right;">
+                        <strong>Australia</strong>
+                        <div class="team-logo blue">A</div>
+                    </div>
+                </div>
+
+                <div class="match-score">
+                    <div>
+                        <strong>IND 174/4</strong>
+                        <span>(18.2 ov)</span>
+                    </div>
+                    <span>Target: 188</span>
+                </div>
+
+                <div class="odds-row">
+                    <div class="odd-pill">
+                        <small>India Win</small>
+                        <strong>1.85</strong>
+                    </div>
+                    <div class="odd-pill">
+                        <small>Australia Win</small>
+                        <strong>2.10</strong>
+                    </div>
+                </div>
+            </article>
+
+            <article class="match-card">
+                <div class="match-header">
+                    <span class="match-status live">Live</span>
+                    <span>Premier League</span>
+                </div>
+
+                <div class="match-teams">
+                    <div class="team-block">
+                        <div class="team-logo">A</div>
+                        <strong>Arsenal</strong>
+                    </div>
+                    <div class="vs-text">VS</div>
+                    <div class="team-block" style="justify-content: flex-end; text-align: right;">
+                        <strong>Chelsea</strong>
+                        <div class="team-logo blue">C</div>
+                    </div>
+                </div>
+
+                <div class="match-score">
+                    <div>
+                        <strong>2 - 1</strong>
+                        <span>2nd Half</span>
+                    </div>
+                    <span>FT in 23 min</span>
+                </div>
+
+                <div class="odds-row">
+                    <div class="odd-pill">
+                        <small>Arsenal</small>
+                        <strong>1.40</strong>
+                    </div>
+                    <div class="odd-pill">
+                        <small>Chelsea</small>
+                        <strong>3.50</strong>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <section class="wallet-box" id="deposit">
+            <div class="wallet-box-inner">
+                <div>
+                    <h3>Add Funds / Deposit</h3>
+                    <p>
+                        Transfer your contest entry amount securely using the official UPI ID below.
+                        Your wallet will be updated after payment confirmation from our team.
+                    </p>
+                    <p class="note" style="margin-top: 12px;">
+                        Note: Send payment screenshot on WhatsApp to activate your wallet instantly.
+                    </p>
+                </div>
+
+                <div class="upi-box">
+                    <span class="label">UPI ID</span>
+                    <div class="upi-code">8929469325@fam</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="bottom-band">
+        <footer>
+            <span>© 2026 Praveen Bat. All Rights Reserved.</span>
+            <span>Play responsibly • 18+ Only</span>
+        </footer>
     </div>
-
-    <!-- Main Content -->
-    <div class="container">
-        <div class="section-title">🔴 Live & Upcoming Matches</div>
-
-        <!-- Match 1 -->
-        <div class="match-card">
-            <div class="match-status">
-                <span>● LIVE (T20 Series)</span>
-                <span>1st Innings</span>
-            </div>
-            <div class="teams-score">
-                <span>India vs Australia</span>
-                <span style="color: #ffcc00;">IND 174/4 (18.2)</span>
-            </div>
-            <div class="odds-container">
-                <div class="odd-box">
-                    <div class="team-name">India Win</div>
-                    <div class="rate">1.85</div>
-                </div>
-                <div class="odd-box">
-                    <div class="team-name">Australia Win</div>
-                    <div class="rate">2.10</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Match 2 -->
-        <div class="match-card">
-            <div class="match-status">
-                <span>● LIVE (Premier League)</span>
-                <span>2nd Half</span>
-            </div>
-            <div class="teams-score">
-                <span>Arsenal vs Chelsea</span>
-                <span style="color: #ffcc00;">2 - 1</span>
-            </div>
-            <div class="odds-container">
-                <div class="odd-box">
-                    <div class="team-name">Arsenal</div>
-                    <div class="rate">1.40</div>
-                </div>
-                <div class="odd-box">
-                    <div class="team-name">Chelsea</div>
-                    <div class="rate">3.50</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Deposit Section -->
-        <div class="wallet-box" id="deposit">
-            <h3 style="color: #ffcc00; margin-bottom: 5px;">Add Funds via UPI</h3>
-            <p style="font-size: 13px; color: #94a3b8;">Transfer funds directly to the official FamApp UPI ID below:</p>
-            
-            <div class="upi-display">
-                8929469325@fam
-            </div>
-            
-            <p style="font-size: 12px; color: #ff4d4d;">Note: Send payment screenshot on WhatsApp to update your wallet balance instantly.</p>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 Praveen Bat. All Rights Reserved. 18+</p>
-    </footer>
-
 </body>
 </html>
