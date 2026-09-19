@@ -1,8 +1,7 @@
 // Supabase authentication for the Praveen Bat demo.
-// Replace these placeholders with values from Supabase Project Settings > API.
-// Never put a Supabase service_role key in this file.
-const SUPABASE_URL = "YOUR_SUPABASE_PROJECT_URL";
-const SUPABASE_PUBLISHABLE_KEY = "YOUR_SUPABASE_PUBLISHABLE_KEY";
+// This browser-safe publishable key must never be replaced with a service_role key.
+const SUPABASE_URL = "https://ulkglnvfakfkkwkacmau.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_-l8U0K9mi5Id0e8uSSr26w_7ke7gQp3";
 
 const supabaseClient = window.supabase?.createClient(
   SUPABASE_URL,
@@ -10,16 +9,12 @@ const supabaseClient = window.supabase?.createClient(
 );
 
 function isConfigured() {
-  return Boolean(
-    supabaseClient &&
-    !SUPABASE_URL.startsWith("YOUR_") &&
-    !SUPABASE_PUBLISHABLE_KEY.startsWith("YOUR_")
-  );
+  return Boolean(supabaseClient);
 }
 
 async function signUpUser(email, password) {
   if (!isConfigured()) {
-    alert("Add your Supabase URL and publishable key in app.js first.");
+    alert("Supabase could not be loaded. Check your internet connection.");
     return;
   }
 
@@ -35,7 +30,7 @@ async function signUpUser(email, password) {
 
 async function loginUser(email, password) {
   if (!isConfigured()) {
-    alert("Add your Supabase URL and publishable key in app.js first.");
+    alert("Supabase could not be loaded. Check your internet connection.");
     return;
   }
 
