@@ -1,2 +1,56 @@
 <!doctype html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>My Team | Praveen Bat</title><link rel="stylesheet" href="app.css"></head><body><header class="top"><a class="brand" href="index.html"><b>P</b> PRAVEEN<span>BAT</span></a><nav><a href="dashboard.html">Dashboard</a><a href="contests.html">Contests</a><a class="active" href="my-team.html">My Team</a><a href="leaderboard.html">Leaderboard</a><a href="wallet.html">Wallet</a></nav><a class="btn small" href="profile.html">Profile</a></header><main class="page"><div class="page-title"><div><span class="eyebrow">India vs Australia</span><h1>Build your team</h1></div><span class="tag">11/11 players</span></div><section class="team-layout"><article class="pitch"><div class="pitch-title">Captain & vice-captain</div><div class="player captain"><span>⭐</span><div><b>R. Sharma</b><small>Captain · Batter</small></div><strong>2x</strong></div><div class="player"><span>⚡</span><div><b>J. Bumrah</b><small>Vice captain · Bowler</small></div><strong>1.5x</strong></div><div class="player"><span>🧤</span><div><b>A. Carey</b><small>Wicket keeper</small></div><strong>98 pts</strong></div><div class="player"><span>🏏</span><div><b>V. Kohli</b><small>Batter</small></div><strong>86 pts</strong></div><div class="player"><span>🎯</span><div><b>P. Cummins</b><small>All-rounder</small></div><strong>79 pts</strong></div><button class="btn primary full" onclick="alert('Demo team saved')">Save team</button></article><aside class="panel"><h2>Team summary</h2><div class="summary"><span>Players selected</span><b>11/11</b></div><div class="summary"><span>India players</span><b>7</b></div><div class="summary"><span>Australia players</span><b>4</b></div><div class="summary"><span>Credits used</span><b>96.5/100</b></div><p class="notice">This is a demo team-builder. Player data is not connected to a live sports feed.</p></aside></section></main></body></html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>My Team | Praveen Bat</title>
+  <link rel="stylesheet" href="app.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="app.js"></script>
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="index.html"><b>P</b> PRAVEEN<span>BAT</span></a>
+    <nav>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="contests.html">Contests</a>
+      <a class="active" href="my-team.html">My Team</a>
+      <a href="leaderboard.html">Leaderboard</a>
+      <a href="wallet.html">Wallet</a>
+    </nav>
+    <a class="btn small" href="profile.html">Profile</a>
+  </header>
+
+  <main class="page">
+    <div class="page-title">
+      <div><span class="eyebrow">India vs Australia</span><h1>Build your team</h1></div>
+      <span class="tag">11/11 players</span>
+    </div>
+
+    <section class="team-layout">
+      <article class="pitch">
+        <div class="pitch-title">Captain & vice-captain</div>
+        <div class="player captain"><span>⭐</span><div><b>R. Sharma</b><small>Captain · Batter</small></div><strong>2x</strong></div>
+        <div class="player"><span>⚡</span><div><b>J. Bumrah</b><small>Vice captain · Bowler</small></div><strong>1.5x</strong></div>
+        <div class="player"><span>🧤</span><div><b>A. Carey</b><small>Wicket keeper</small></div><strong>98 pts</strong></div>
+        <div class="player"><span>🏏</span><div><b>V. Kohli</b><small>Batter</small></div><strong>86 pts</strong></div>
+        <div class="player"><span>🎯</span><div><b>P. Cummins</b><small>All-rounder</small></div><strong>79 pts</strong></div>
+        <button class="btn primary full" onclick="alert('Demo team saved')">Save team</button>
+      </article>
+
+      <aside class="panel">
+        <h2>Team summary</h2>
+        <div class="summary"><span>Players selected</span><b>11/11</b></div>
+        <div class="summary"><span>India players</span><b>7</b></div>
+        <div class="summary"><span>Australia players</span><b>4</b></div>
+        <div class="summary"><span>Credits used</span><b>96.5/100</b></div>
+        <p class="notice">This is a demo team-builder.</p>
+      </aside>
+    </section>
+  </main>
+
+  <script>
+    requireUser();
+  </script>
+</body>
+</html>

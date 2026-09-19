@@ -1,2 +1,67 @@
 <!doctype html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Contests | Praveen Bat</title><link rel="stylesheet" href="app.css"></head><body><header class="top"><a class="brand" href="index.html"><b>P</b> PRAVEEN<span>BAT</span></a><nav><a href="dashboard.html">Dashboard</a><a class="active" href="contests.html">Contests</a><a href="my-team.html">My Team</a><a href="leaderboard.html">Leaderboard</a><a href="wallet.html">Wallet</a></nav><a class="btn small" href="profile.html">Profile</a></header><main class="page"><div class="page-title"><div><span class="eyebrow">Choose your challenge</span><h1>Contests</h1></div><div class="filters"><button class="filter active">All</button><button class="filter">Mega</button><button class="filter">Practice</button></div></div><section class="contest-grid"><article class="contest"><div class="contest-head"><span class="tag live">Popular</span><span class="muted">T20 Series</span></div><h2>India vs Australia</h2><div class="prize"><span>Prize pool</span><strong>₹10,000</strong></div><div class="contest-meta"><span>1,240 spots</span><span>₹49 entry</span></div><a class="btn primary full" href="my-team.html">Create team</a></article><article class="contest"><div class="contest-head"><span class="tag">Safe play</span><span class="muted">Premier League</span></div><h2>Arsenal vs Chelsea</h2><div class="prize"><span>Prize pool</span><strong>₹2,500</strong></div><div class="contest-meta"><span>500 spots</span><span>₹19 entry</span></div><a class="btn primary full" href="my-team.html">Create team</a></article><article class="contest"><div class="contest-head"><span class="tag">Practice</span><span class="muted">No entry fee</span></div><h2>Free Practice League</h2><div class="prize"><span>Prize pool</span><strong>Practice</strong></div><div class="contest-meta"><span>Unlimited spots</span><span>Free</span></div><a class="btn secondary full" href="my-team.html">Join practice</a></article></section><p class="notice">Contest values shown are demonstration data. Verify applicable laws and platform terms before launching real-money features.</p></main></body></html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Contests | Praveen Bat</title>
+  <link rel="stylesheet" href="app.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="app.js"></script>
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="index.html"><b>P</b> PRAVEEN<span>BAT</span></a>
+    <nav>
+      <a href="dashboard.html">Dashboard</a>
+      <a class="active" href="contests.html">Contests</a>
+      <a href="my-team.html">My Team</a>
+      <a href="leaderboard.html">Leaderboard</a>
+      <a href="wallet.html">Wallet</a>
+    </nav>
+    <a class="btn small" href="profile.html">Profile</a>
+  </header>
+
+  <main class="page">
+    <div class="page-title">
+      <div><span class="eyebrow">Choose your challenge</span><h1>Contests</h1></div>
+      <div class="filters">
+        <button class="filter active">All</button>
+        <button class="filter">Mega</button>
+        <button class="filter">Practice</button>
+      </div>
+    </div>
+
+    <section class="contest-grid">
+      <article class="contest">
+        <div class="contest-head"><span class="tag live">Popular</span><span class="muted">T20 Series</span></div>
+        <h2>India vs Australia</h2>
+        <div class="prize"><span>Prize pool</span><strong>₹10,000</strong></div>
+        <div class="contest-meta"><span>1,240 spots</span><span>₹49 entry</span></div>
+        <a class="btn primary full" href="my-team.html">Create team</a>
+      </article>
+
+      <article class="contest">
+        <div class="contest-head"><span class="tag">Safe play</span><span class="muted">Premier League</span></div>
+        <h2>Arsenal vs Chelsea</h2>
+        <div class="prize"><span>Prize pool</span><strong>₹2,500</strong></div>
+        <div class="contest-meta"><span>500 spots</span><span>₹19 entry</span></div>
+        <a class="btn primary full" href="my-team.html">Create team</a>
+      </article>
+
+      <article class="contest">
+        <div class="contest-head"><span class="tag">Practice</span><span class="muted">No entry fee</span></div>
+        <h2>Free Practice League</h2>
+        <div class="prize"><span>Prize pool</span><strong>Practice</strong></div>
+        <div class="contest-meta"><span>Unlimited spots</span><span>Free</span></div>
+        <a class="btn secondary full" href="my-team.html">Join practice</a>
+      </article>
+    </section>
+
+    <p class="notice">Contest values shown are demonstration data.</p>
+  </main>
+
+  <script>
+    requireUser();
+  </script>
+</body>
+</html>
